@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<style>
+body {
+  background-image: url('/static/wow.jpg');
+background-repeat: no-repeat;
+background-size: 100%;}
+form {size: 100%
+    background-color:black;
+    margin: auto;
+    width: 25%;
+    height: 100%;
+    max-height: 50%;
+    border: 1px solid #ccc;
+}
+.result {
+    margin: auto;
+    width: 25%;
+    height: 100%;
+    border: 1px solid #ccc;
+}
+</style>
+<head>
+    <title>Cricket Prediction</title>
+</head>
+<body>
+<form action="{{ url_for('predict') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        team1:
+        <input name="team1" type="character" required>
+
+        <br>
+        <br> team2:
+        <input name="team2" type="character" required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div  class="result" align="center">
+
+    {% if result %}
+        {% for variable, value in original_input.items() %}
+            <b>{{ variable }}</b> : {{ value }}
+        {% endfor %}
+        <br>
+        <br> Predicted Winner:
+           <p style="color:orange; font-size: 75px;background-color: white ">{{ result }}</p>
+           
+           
+    {% endif %}
+</div>
+</body>
+</html>
+
+
+
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+</style>
+
+<div class="footer">
+  <p>&copy; Copyright 2020. All Rights Reserved. by Vishal Mhatre</p>
+</div>
